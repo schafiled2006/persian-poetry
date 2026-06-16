@@ -1,0 +1,454 @@
+/* ==========================================
+   گنجینه اشعار پارسی - استایل‌ها
+   ========================================== */
+
+/* فونت ایران نستعلیق */
+@font-face {
+    font-family: 'IranNastaliq';
+    src: url('../font/IranNastaliq.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+    
+    /* تصویر بک‌گراند ثابت */
+    background-image: url('../assets/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* کانواس ذرات */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* لودینگ */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s;
+}
+
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-content i {
+    font-size: 3rem;
+    animation: flip 1.5s infinite;
+}
+
+.loader-content p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+@keyframes flip {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+}
+
+/* کانتینر اصلی */
+.container {
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* هدر سایت */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.95;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+/* کارت شعر */
+.poem-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    padding: 35px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    animation: fadeIn 0.6s;
+}
+
+.poem-card:hover {
+    transform: translateY(-3px);
+}
+
+.poem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.poet-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(102, 126, 234, 0.15);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-weight: 700;
+    color: #2d3436;
+}
+
+.poet-info i {
+    color: #e74c3c;
+}
+
+.poem-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: rgba(102, 126, 234, 0.15);
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #2d3436;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: rgba(102, 126, 234, 0.3);
+    transform: scale(1.1);
+}
+
+.action-btn.favorite-active {
+    background: #e74c3c;
+    color: white;
+}
+
+/* محتوای شعر */
+.poem-content {
+    margin: 25px 0;
+}
+
+.poem-text {
+    font-family: 'IranNastaliq', 'Amiri', serif;
+    font-size: 2.2rem;
+    line-height: 3.5;
+    color: #2d3436;
+    white-space: pre-line;
+    text-align: center;
+}
+
+.poem-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.mood-indicator {
+    font-size: 0.9rem;
+    color: #2d3436;
+    font-weight: 600;
+    background: rgba(102, 126, 234, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.poem-number {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    color: #2d3436;
+}
+
+/* دکمه‌های ناوبری */
+.navigation {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.95);
+    color: #2d3436;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-family: 'Vazirmatn', sans-serif;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* مودال */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    max-height: 70vh;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.3rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.empty-favorites {
+    text-align: center;
+    color: #95a5a6;
+    padding: 25px;
+}
+
+.favorite-item {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: right;
+}
+
+.favorite-item:hover {
+    background: #e9ecef;
+    transform: translateX(-5px);
+}
+
+.favorite-item .fav-poet {
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.favorite-item .fav-text {
+    font-size: 0.85rem;
+    color: #2d3436;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* نوتیفیکیشن */
+.notification {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1.7rem;
+    }
+    
+    .poem-text {
+        font-size: 1.3rem;
+        line-height: 2.5;
+    }
+    
+    .navigation {
+        flex-direction: column;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .poem-header {
+        flex-direction: column;
+        align-items: center;
+    }
+}

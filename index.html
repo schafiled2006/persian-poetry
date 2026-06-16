@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گنجینه اشعار پارسی</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <canvas id="particles"></canvas>
+    
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <i class="fas fa-book-open"></i>
+            <p>در حال بارگذاری...</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <header class="site-header">
+            <div class="header-content">
+                <h1 class="main-title">گنجینه اشعار پارسی</h1>
+                <p class="subtitle">سفری در دنیای شعر و ادب</p>
+            </div>
+            
+            <div class="header-actions">
+                <button class="icon-btn" id="favoritesBtn" title="علاقه‌مندی‌ها">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="favCount">0</span>
+                </button>
+            </div>
+        </header>
+
+        <section class="poem-card" id="poemCard">
+            <div class="poem-header">
+                <div class="poet-info">
+                    <i class="fas fa-feather-alt"></i>
+                    <span class="poet-name" id="poetName">حافظ شیرازی</span>
+                </div>
+                <div class="poem-actions">
+                    <button class="action-btn" id="copyBtn" title="کپی شعر">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="action-btn" id="favoriteBtn" title="افزودن به علاقه‌مندی‌ها">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="action-btn" id="shareBtn" title="اشتراک‌گذاری">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="poem-content">
+                <div class="poem-text" id="poemText">
+                    یوسف گمگشته باز آید به کنعان غم مخور<br>
+                    کلبه احزان شود روزی گلستان غم مخور
+                </div>
+            </div>
+            
+            <div class="poem-footer">
+                <span class="mood-indicator" id="moodIndicator">
+                    امید و روشنایی
+                </span>
+                <span class="poem-number" id="poemNumber">1 / 20</span>
+            </div>
+        </section>
+
+        <div class="navigation">
+            <button class="nav-btn prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-right"></i>
+                <span>قبلی</span>
+            </button>
+            
+            <button class="nav-btn next-btn" id="nextBtn">
+                <span>بعدی</span>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+    </main>
+
+    <div class="modal" id="favoritesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-heart"></i> علاقه‌مندی‌های من</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="favoritesList">
+                <p class="empty-favorites">هنوز شعری اضافه نکردید</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
